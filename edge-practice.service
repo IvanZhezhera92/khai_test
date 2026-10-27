@@ -1,0 +1,17 @@
+[Unit]
+Description=Raspberry Pi temperature monitoring
+
+[Service]
+Type=simple
+# Обліковий запис процесу служби.
+User=pi
+# Робочий каталог і місце збереження measurements.csv.
+WorkingDirectory=/home/pi/edge-practice/hello-world
+# Команда запуску; -u вимикає буферизацію стандартного виводу Python.
+ExecStart=/usr/bin/python3 -u /home/pi/edge-practice/hello-world/main.py
+# Перезапуск після аварійного завершення та інтервал очікування.
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
